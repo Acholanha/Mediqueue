@@ -6,6 +6,14 @@ app = Flask(__name__)
 def home():
     return send_file('index.html')
 
+@app.route('/about')
+def about():
+    return send_file('about.html')
+
+@app.route('/dashboard')
+def dashboard():
+    return send_file('dashboard.html')
+
 @app.route('/register')
 def register():
     return send_file('register.html')

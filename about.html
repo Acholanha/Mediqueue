@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About - MediQueue</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f8fafc; color: #1e293b; }
+    .navbar { background: #0284c7; color: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
+    .navbar h2 { margin: 0; font-size: 22px; }
+    .navbar a { color: white; text-decoration: none; margin-left: 20px; font-weight: 500; }
+    .container { max-width: 800px; margin: 40px auto; background: white; padding: 35px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+    .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 25px; }
+    .card { background: #f1f5f9; padding: 20px; border-radius: 8px; border-left: 4px solid #0284c7; }
+    footer { text-align: center; padding: 20px; color: #64748b; margin-top: 40px; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <h2>MediQueue</h2>
+    <div>
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/dashboard">Dashboard</a>
+      <a href="/tasks">Tasks</a>
+      <a href="/register">Register</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>About MediQueue</h1>
+    <p>MediQueue is an online doctor appointment and real-time patient queue management system built to eliminate long hospital waiting times.</p>
+    
+    <div class="card-grid">
+      <div class="card">
+        <h3>Our Mission</h3>
+        <p>Provide seamless digital token booking and live queue tracking for patients and clinics.</p>
+      </div>
+      <div class="card">
+        <h3>Project Architecture</h3>
+        <p>Built with modular components, multi-page routing, and RESTful backend APIs.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>&copy; 2026 MediQueue Healthcare System | CSE 3242 Project</footer>
+</body>
+</html>

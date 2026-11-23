@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - MediQueue</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f8fafc; color: #1e293b; }
+    .navbar { background: #0284c7; color: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
+    .navbar h2 { margin: 0; font-size: 22px; }
+    .navbar a { color: white; text-decoration: none; margin-left: 20px; font-weight: 500; }
+    .container { max-width: 900px; margin: 40px auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+    .stats { display: flex; gap: 20px; margin-bottom: 30px; }
+    .stat-box { flex: 1; background: #e0f2fe; padding: 20px; border-radius: 8px; text-align: center; }
+    .stat-box h2 { margin: 0; color: #0369a1; font-size: 28px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+    th, td { padding: 12px; border-bottom: 1px solid #e2e8f0; text-align: left; }
+    th { background: #f1f5f9; }
+    .badge { padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: bold; }
+    .waiting { background: #fef3c7; color: #b45309; }
+    .active { background: #dcfce7; color: #15803d; }
+    footer { text-align: center; padding: 20px; color: #64748b; margin-top: 40px; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <h2>MediQueue</h2>
+    <div>
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/dashboard">Dashboard</a>
+      <a href="/tasks">Tasks</a>
+      <a href="/register">Register</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Live Patient Queue Dashboard</h1>
+    <div class="stats">
+      <div class="stat-box"><h2>14</h2><p>Patients in Queue</p></div>
+      <div class="stat-box"><h2>04</h2><p>Doctors Active</p></div>
+      <div class="stat-box"><h2>12 min</h2><p>Avg. Wait Time</p></div>
+    </div>
+
+    <h3>Current Appointments</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Token</th>
+          <th>Patient Name</th>
+          <th>Department</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>#MQ-101</td><td>Anha Mahmud</td><td>Cardiology</td><td><span class="badge active">In Consultation</span></td></tr>
+        <tr><td>#MQ-102</td><td>Rabeya Akter</td><td>Medicine</td><td><span class="badge waiting">Waiting</span></td></tr>
+        <tr><td>#MQ-103</td><td>Tanvir Hasan</td><td>Orthopedics</td><td><span class="badge waiting">Waiting</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer>&copy; 2026 MediQueue Healthcare System | CSE 3242 Project</footer>
+</body>
+</html>
