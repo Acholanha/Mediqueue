@@ -1,0 +1,2 @@
+
+print("MediQueue Ready!")
