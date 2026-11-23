@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediQueue - Smart Doctor Appointment & Queue System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #222;
+            background-color: #f9fbfd;
+        }
+        header {
+            background-color: #111111;
+            color: #ffffff;
+            padding: 18px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: 0.5px;
+        }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+        }
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #0d6efd, #0043a8);
+            color: white;
+        }
+        .hero h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+        .hero p {
+            font-size: 18px;
+            max-width: 650px;
+            margin: 0 auto 30px auto;
+            line-height: 1.6;
+        }
+        .cta-btn {
+            background-color: #ffffff;
+            color: #0d6efd;
+            padding: 14px 28px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+            font-size: 16px;
+            display: inline-block;
+        }
+        .cta-btn:hover {
+            background-color: #e9ecef;
+        }
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            padding: 60px 20px;
+            max-width: 1050px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            flex: 1;
+            min-width: 260px;
+            border-top: 4px solid #0d6efd;
+        }
+        .card h3 {
+            margin-top: 0;
+            color: #0d6efd;
+        }
+        footer {
+            background-color: #111111;
+            color: #aaaaaa;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>MediQueue</h1>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/register">Register</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h2>Skip the Hospital Waiting Room</h2>
+    <p>Book doctor appointments online, track your live serial number, and get real-time wait time estimates with our Smart Priority Queue system.</p>
+    <a href="/register" class="cta-btn">Register Now →</a>
+</section>
+
+<section class="features">
+    <div class="card">
+        <h3>Smart Priority Queue</h3>
+        <p>Automatically prioritizes emergency cases while keeping regular patient appointments organized and transparent.</p>
+    </div>
+    <div class="card">
+        <h3>Real-Time Wait Calculator</h3>
+        <p>Know your exact estimated consultation time before leaving home so you never waste hours in crowded lobbies.</p>
+    </div>
+    <div class="card">
+        <h3>Dual Dashboards</h3>
+        <p>Dedicated interfaces for both patients to book slots and doctors to manage live consultation queues effortlessly.</p>
+    </div>
+</section>
+
+<footer>
+    &copy; 2026 MediQueue Project | Built by Team Codecrafts (CSE 3242)
+</footer>
+
+</body>
+</html>
