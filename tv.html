@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MediQueue - Hospital Waiting Room TV Display</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+        body { background: #0f172a; color: white; height: 100vh; display: flex; flex-direction: column; }
+        .tv-header { background: #1e293b; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #38bdf8; }
+        .tv-header h1 { font-size: 32px; color: #38bdf8; }
+        .clock { font-size: 24px; font-weight: bold; color: #e2e8f0; }
+
+        .tv-body { display: grid; grid-template-columns: 1.2fr 1fr; gap: 30px; padding: 40px; flex: 1; }
+        .now-serving { background: linear-gradient(135deg, #1d4ed8, #0284c7); border-radius: 24px; padding: 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; box-shadow: 0 20px 50px rgba(2, 132, 199, 0.4); }
+        .now-serving h2 { font-size: 28px; text-transform: uppercase; letter-spacing: 3px; color: #bae6fd; margin-bottom: 20px; }
+        .big-token { font-size: 95px; font-weight: bold; background: white; color: #0f172a; padding: 20px 50px; border-radius: 20px; font-family: monospace; margin-bottom: 25px; animation: glow 2s infinite alternate; }
+        @keyframes glow { from { box-shadow: 0 0 15px #fff; } to { box-shadow: 0 0 35px #38bdf8; } }
+        .serving-name { font-size: 36px; font-weight: bold; margin-bottom: 10px; }
+        .serving-dept { font-size: 24px; background: rgba(0,0,0,0.25); padding: 8px 24px; border-radius: 30px; }
+
+        .up-next { background: #1e293b; border-radius: 24px; padding: 30px; }
+        .up-next h3 { font-size: 26px; color: #fbbf24; margin-bottom: 20px; border-bottom: 2px solid #334155; padding-bottom: 12px; }
+        .next-item { display: flex; justify-content: space-between; align-items: center; background: #334155; padding: 18px 25px; border-radius: 14px; margin-bottom: 15px; font-size: 22px; }
+        .next-token { font-weight: bold; color: #38bdf8; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <div class="tv-header">
+        <h1>🏥 MEDIQUEUE LIVE TOKEN DISPLAY</h1>
+        <div class="clock" id="liveClock"></div>
+    </div>
+
+    <div class="tv-body">
+        <div class="now-serving">
+            <h2>🔔 NOW SERVING</h2>
+            <div class="big-token" id="currentToken">#MQ---</div>
+            <div class="serving-name" id="currentName">Please Wait...</div>
+            <div class="serving-dept" id="currentDept">Hospital Reception</div>
+        </div>
+
+        <div class="up-next">
+            <h3>⏳ UPCOMING QUEUE</h3>
+            <div id="upcomingList"></div>
+        </div>
+    </div>
+
+    <script>
+        function updateClock() {
+            document.getElementById('liveClock').innerText = new Date().toLocaleTimeString();
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        async function refreshTV() {
+            const res = await fetch('/api/appointments');
+            const data = await res.json();
+
+            const active = data.find(i => i.status === 'In Consultation') || data.find(i => i.status === 'Waiting');
+            if (active) {
+                document.getElementById('currentToken').innerText = `#MQ-${active.id}`;
+                document.getElementById('currentName').innerText = active.patient_name;
+                document.getElementById('currentDept').innerText = `Room: ${active.department}`;
+            }
+
+            const waiting = data.filter(i => i.status === 'Waiting' && (!active || i.id !== active.id)).slice(0, 5);
+            const list = document.getElementById('upcomingList');
+            list.innerHTML = waiting.map(w => `
+                <div class="next-item">
+                    <span class="next-token">#MQ-${w.id}</span>
+                    <span>${w.patient_name}</span>
+                    <span style="color:#94a3b8; font-size:18px;">${w.department}</span>
+                </div>
+            `).join('');
+        }
+        setInterval(refreshTV, 3000);
+        refreshTV();
+    </script>
+</body>
+</html>
